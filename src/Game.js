@@ -8,10 +8,11 @@ class Game extends React.Component {
     super(props);
     this.state = {
         history: [{
-            squares: Array(9).fill(null),
+            squares: Array(this.props.boardsize**2).fill(null),
         }],
         stepNumber: 0,
         xIsNext: true,
+        boardsize: this.props.boardsize
     };
   }
 
@@ -31,6 +32,7 @@ class Game extends React.Component {
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
     });
+    console.log(this.state.history)
   }
 
 
@@ -70,7 +72,8 @@ class Game extends React.Component {
         <div className="game-board">
           <Board 
             squares={current.squares}
-            onClick={(i) => this.handleClick(i)}  
+            onClick={(i) => this.handleClick(i)}
+            boardsize = {this.state.boardsize}
           />
         </div>
         <div className="game-info">

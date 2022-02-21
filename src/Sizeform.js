@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import Game from './Game'
 
 class Sizeform extends React.Component {
@@ -16,7 +15,11 @@ class Sizeform extends React.Component {
     }
   
     handleSubmit(event) {
-      this.setState({summitted: true});
+      if ((this.state.value)) {
+        this.setState({summitted: true});
+      } else {
+        alert("Please enter size of board N*N")
+      }
       event.preventDefault();
     }
   
@@ -24,13 +27,13 @@ class Sizeform extends React.Component {
       return (
         <div>
             {this.state.summitted ? (
-                <Game />
+                <Game boardsize={this.state.value} />
             ):(
             <div>
-                <h1>Enter board size</h1>
+                <h1>Enter board size (N*N)</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        <input type="text" value={this.state.value} onChange={this.handleChange} />
+                        <input type="text" pattern="[0-9]*" value={this.state.value} onChange={this.handleChange} />
                     </label>
                     <input type="submit" value="Play" />
                 </form>
