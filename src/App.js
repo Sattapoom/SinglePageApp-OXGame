@@ -1,8 +1,10 @@
 import './App.css';
-import Game from './Game'
+import Sizeform from './Sizeform'
 
 function App() {
-  return <Game />
+  return <>
+    <Sizeform />
+  </>
 }
 
 export default App;
