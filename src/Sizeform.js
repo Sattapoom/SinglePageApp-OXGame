@@ -15,10 +15,10 @@ class Sizeform extends React.Component {
     }
   
     handleSubmit(event) {
-      if ((this.state.value)) {
+      if ((this.state.value) && (this.state.value)>=3) {
         this.setState({summitted: true});
       } else {
-        alert("Please enter size of board N*N")
+        alert("Please enter size of board N*N\n(minimum size of the board is 3)")
       }
       event.preventDefault();
     }
@@ -33,7 +33,7 @@ class Sizeform extends React.Component {
                 <h1>Enter board size (N*N)</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        <input type="text" pattern="[0-9]*" value={this.state.value} onChange={this.handleChange} />
+                        <input type="number" min={3} pattern="[0-9]*" value={this.state.value} onChange={this.handleChange} />
                     </label>
                     <input type="submit" value="Play" />
                 </form>

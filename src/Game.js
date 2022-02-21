@@ -32,7 +32,6 @@ class Game extends React.Component {
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
     });
-    console.log(this.state.history)
   }
 
 
